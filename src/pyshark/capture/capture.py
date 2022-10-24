@@ -417,8 +417,9 @@ class Capture(object):
         parameters = [self._get_tshark_path(), "-l", "-n", "-T", output_type] + \
             self.get_parameters(packet_count=packet_count) + output_parameters
 
+        print(f'FR parameters: {parameters}')
         self._log.debug(
-            "Creating TShark subprocess with parameters: " + " ".join(parameters))
+            "FR Creating TShark subprocess with parameters: " + " ".join(parameters))
         self._log.debug("Executable: %s" % parameters[0])
         tshark_process = await asyncio.create_subprocess_exec(*parameters,
                                                               stdout=subprocess.PIPE,
